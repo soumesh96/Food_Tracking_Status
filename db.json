@@ -21,7 +21,7 @@
       "total": 510,
       "discountPercent": 2,
       "netTotal": 408,
-      "status": "DELIVERED",
+      "status": "ORDERED",
       "delivery": {
         "assignee": {
           "name": "B Kumar",

@@ -27,7 +27,7 @@ import { simpleAction } from './store/actions/simpleAction';
 import OrderList from '../../db.json';
 
 function getSteps() {
-  return ['Placed', 'APPROVED', 'PREPARING', ' ON TRACK', ' DELIVERED'];
+  return ['ORDERED', 'APPROVED', 'PREPARING', ' ON TRACK', ' DELIVERED'];
 }
 
 function getStepContent(step) {
@@ -60,6 +60,7 @@ const TrackFood = ({
   const [orderId, setOrderId] = useState('')
   const [user, setUserId] = useState('')
   const [orderDetails, setOrderDetails] = useState('')
+  const [selectedData, setSelectedData] = useState({})
   const [activeStep, setActiveStep] = useState(0);
   const [center, setCenter] = useState({ lat: 0, lng: 0 })
 
@@ -75,21 +76,27 @@ const TrackFood = ({
   }, []);
 
   useEffect(() => {
+    if (orderId && OrderList) {
+      setSelectedData(OrderList.orders[orderId])
+    }
+  }, [orderId])
+
+  useEffect(() => {
     if (user) {
       simpleAction(user)
     }
   }, [user, simpleAction])
 
   useEffect(() => {
-    if (orderDetails) {
+    if (orderDetails && selectedData && lists) {
       const obj = {
         lat: orderDetails.delivery.location.lat,
         lng: orderDetails.delivery.location.lng
       }
       setCenter(obj);
-      setActiveStep(status[orderDetails.status]);
+      setActiveStep(status[lists.status]);
     }
-  }, [orderDetails, status]);
+  }, [orderDetails, status, selectedData, lists]);
 
   useEffect(() => {
     if (lists && lists.items && lists.items.length > 0) {

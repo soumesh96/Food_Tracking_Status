@@ -9,7 +9,7 @@ const port = 8989
 const db = JSON.parse(fs.readFileSync(path.join(__dirname, 'db.json')).toString())
 
 // cors origin
-const whitelist = ['http://localhost:3000']
+const whitelist = ['http://localhost:3000', 'http://localhost:9000']
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
