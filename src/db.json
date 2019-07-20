@@ -1,0 +1,38 @@
+{
+  "latestOrders": {
+    "U73": "O123"
+  },
+  "orders": {
+    "O123": {
+      "items": [
+        {
+          "title": "Chilly Chicken",
+          "price": 350,
+          "discountedPrice": 220,
+          "quantity": 3
+        },
+        {
+          "title": "Chicken Biryani",
+          "price": 350,
+          "discountedPrice": 290,
+          "quantity": 2
+        }
+      ],
+      "total": 510,
+      "discountPercent": 2,
+      "netTotal": 408,
+      "status": "PREPARING",
+      "delivery": {
+        "assignee": {
+          "name": "B Kumar",
+          "rating": 4.3,
+          "mobile": 9876543210
+        },
+        "location": {
+          "lat": 12.9785786,
+          "lng": 77.5963265
+        }
+      }
+    }
+  }
+}
