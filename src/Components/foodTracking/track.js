@@ -21,7 +21,7 @@ import {
 } from '@material-ui/core';
 // import HEREMap, { Marker } from 'react-here-maps';
 // import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-// import { GoogleApiWrapper, Map, InfoWindow, Marker } from 'google-maps-react';
+// import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 
 import { simpleAction } from './store/actions/simpleAction';
 import OrderList from '../../db.json';
@@ -62,7 +62,7 @@ const TrackFood = ({
   const [orderDetails, setOrderDetails] = useState('')
   const [selectedData, setSelectedData] = useState({})
   const [activeStep, setActiveStep] = useState(0);
-  const [center, setCenter] = useState({ lat: 0, lng: 0 })
+  // const [center, setCenter] = useState({ lat: 0, lng: 0 })
 
   const steps = getSteps();
   const status = { 'ORDERED': 0, 'APPROVED': 1, 'PREPARING': 2, 'ON TRACK': 3, 'DELIVERED': 4 }
@@ -89,11 +89,11 @@ const TrackFood = ({
 
   useEffect(() => {
     if (orderDetails && selectedData && lists) {
-      const obj = {
-        lat: orderDetails.delivery.location.lat,
-        lng: orderDetails.delivery.location.lng
-      }
-      setCenter(obj);
+      // const obj = {
+      //   lat: orderDetails.delivery.location.lat,
+      //   lng: orderDetails.delivery.location.lng
+      // }
+      // setCenter(obj);
       setActiveStep(status[lists.status]);
     }
   }, [orderDetails, status, selectedData, lists]);
@@ -246,7 +246,17 @@ const TrackFood = ({
             </CardContent>
             <CardActions style={{ display: 'flex', margin: 'auto' }}>
               Enjoy your Meal
-        </CardActions>
+            </CardActions>
+            {/* <CardActions>
+              <Map
+                google={props && props.google}
+                zoom={8}
+                // style={mapStyles}
+                initialCenter={{ lat: 47.444, lng: -122.176 }}
+              >
+                <Marker position={{ lat: 48.00, lng: -122.00 }} />
+              </Map>
+            </CardActions> */}
           </Card>
         </Grid>
       </Grid>
@@ -264,5 +274,5 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrackFood);
 // export default connect(mapStateToProps, mapDispatchToProps)(GoogleApiWrapper({
-//   apiKey: (YOUR_GOOGLE_API_KEY_GOES_HERE)
+//   apiKey: ('AIzaSyArJFzZW1pQ3kTYFnQnRf6E2v0OqXScDbs')
 // })(TrackFood))
